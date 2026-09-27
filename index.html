@@ -23,16 +23,16 @@
         flex: 1;
       }
     </style>
-  <link rel="icon" href="/favicon.ico"/>    <meta name="robots" content="noindex, nofollow" />
-    <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="/app/favicon.ico"/>    <meta name="robots" content="noindex, nofollow" />
+    <link rel="manifest" href="/app/manifest.json" />
     <meta name="theme-color" content="#1565C0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Parkingi" />
-    <link rel="apple-touch-icon" href="icon-192.png" />
-    <link rel="icon" href="icon-192.png" />
-    <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}</script>
+    <link rel="apple-touch-icon" href="/app/icon-192.png" />
+    <link rel="icon" href="/app/icon-192.png" />
+    <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/app/sw.js',{scope:'/app/'}).catch(function(){})})}</script>
   </head>
 
   <body>
@@ -42,6 +42,6 @@
     </noscript>
     <!-- The root element for your Expo app. -->
     <div id="root"></div>
-  <script src="/_expo/static/js/web/index-76892feeb69bd5adc09edb662abaf753.js" defer></script>
+  <script src="/app/_expo/static/js/web/index-fa03b420686e605b098662a1ec6c749d.js" defer></script>
 </body>
 </html>
