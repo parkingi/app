@@ -1,5 +1,5 @@
 // Minimal app-shell cache so Parkingi installs as a PWA and opens offline to its shell.
-const CACHE = 'parkingi-shell-v1';
+const CACHE = 'parkingi-shell-v2';
 self.addEventListener('install', (e) => {
   self.skipWaiting();
   e.waitUntil(caches.open(CACHE).then((c) => c.add('.')));
@@ -11,9 +11,10 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  // Navigations: serve the cached shell when offline (SPA), so the app still opens.
+  // Navigations: always ask the server for the newest page (GitHub Pages lets browsers reuse it for 10 minutes;
+  // no-cache revalidates, a cheap 304 when nothing changed), and serve the cached shell when offline (SPA).
   if (req.mode === 'navigate') {
-    e.respondWith(fetch(req).catch(() => caches.match('.').then((r) => r || caches.match(req))));
+    e.respondWith(fetch(req, { cache: 'no-cache' }).catch(() => caches.match('.').then((r) => r || caches.match(req))));
     return;
   }
   // Same-origin static assets: cache-first.
